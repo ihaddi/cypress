@@ -32,27 +32,16 @@ module.exports = {
         },
       },
       
-
-      {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
-      },
+        
       {
         test: /\.scss$/,
         use: [
-          MiniCssExtractPlugin.loader,
-          "css-loader",
-          {
-            loader: "sass-loader",
-            options: {
-              sourceMap: true,
-
-              // // use for separate css pages (custom pages, eg. wizard, invoices, etc.)
-              // includePaths: demos.map((demo) => {
-              //     return slash(srcPath) + "/sass/theme/demos/" + demo;
-              // })
-            },
-          },
+          // Creates `style` nodes from JS strings
+          'style-loader',
+          // Translates CSS into CommonJS
+          'css-loader',
+          // Compiles Sass to CSS
+          'sass-loader',
         ],
       },
 
@@ -79,10 +68,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: SrcFolder + "/index.html",
     }),
-    // create css file
-    new MiniCssExtractPlugin({
-        filename: distAssetFolder + "/css/style.[name].css",
-      }),
+   
   ],
 
   output: {
