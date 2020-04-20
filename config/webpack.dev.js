@@ -93,6 +93,7 @@ module.exports = {
     contentBase: distFolder,
     compress: true,
     hot: true,
+    open:true,
     port: 9000,
   },
 };

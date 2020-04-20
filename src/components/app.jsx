@@ -7,7 +7,7 @@ class App extends Component {
     render() { 
         return ( 
             <div>
-                <h2>Welcome to2 Cypress</h2>
+                <h2>Welcome to Cypress</h2>
             </div>
          );
     }
