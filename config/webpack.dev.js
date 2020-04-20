@@ -81,7 +81,7 @@ module.exports = {
     }),
     // create css file
     new MiniCssExtractPlugin({
-        filename: distAssetFolder + "css/style.[name].css",
+        filename: distAssetFolder + "/css/style.[name].css",
       }),
   ],
 
