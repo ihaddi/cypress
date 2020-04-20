@@ -3,6 +3,7 @@ const path = require("path");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserJSPlugin = require("terser-webpack-plugin");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
@@ -20,7 +21,16 @@ module.exports = {
   optimization: {
     minimize: true,
     // js and css minimizer
-    minimizer: [new TerserJSPlugin({ extractComments: false,parallel: true}), new OptimizeCSSAssetsPlugin({})],
+    minimizer: [
+      new UglifyJsPlugin({
+        uglifyOptions: {
+          output: {
+            comments: false,
+          },
+        },
+      }),
+      new OptimizeCSSAssetsPlugin({}),
+    ],
   },
   module: {
     rules: [
@@ -151,5 +161,4 @@ module.exports = {
     filename: "[name].bundle.[contenthash].js",
     path: distFolder,
   },
-  
 };
